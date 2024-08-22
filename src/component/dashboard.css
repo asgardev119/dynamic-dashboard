@@ -1,0 +1,62 @@
+.dashboard {
+  margin-top: 0;
+}
+
+.categories {
+  height: auto;
+  width: auto;
+  text-align: start;
+  padding: 20px;
+}
+
+.widgets {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  height: auto;
+  gap: 10px;
+}
+.widget {
+  height: 150px;
+  width: 300px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 2px 3px 10px lightgrey;
+  text-align: center;
+  border: none;
+}
+
+
+
+.add-widget-modal {
+  width: 500px;
+  height: auto;
+  border: 1px solid;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 500px;
+  background-color: aliceblue;
+
+}
+
+.add-widget-modal form {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  gap: 10px;
+  width: 60%;
+  height: auto;
+  margin: auto;
+
+}
+.add-widget-modal form button {
+  height: 30px;
+  width: 120px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+.add-widget-modal form input {
+  height: 20px;
+}
