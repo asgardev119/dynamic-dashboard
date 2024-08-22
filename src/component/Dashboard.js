@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import data from "../data.json";
+import data from "../data.json";
 import "./dashboard.css";
 
 export const Dashboard = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(data.categories);
   const [addWidgetModal, setAddWidgetModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredWidgets, setFilteredWidgets] = useState([]);
@@ -11,23 +11,32 @@ export const Dashboard = () => {
   const [newWidgetName, setNewWidgetName] = useState("");
   const [newWidgetText, setNewWidgetText] = useState("");
 
-  useEffect(() => {
-    const storedData = localStorage.getItem("data");
-    if (storedData) {
-      setCategories(JSON.parse(storedData).categories);
-    } else {
-      fetch("../data.json")
-        .then((response) => response.json())
-        .then((data) => setCategories(data.categories));
-    }
-  }, []);
+
+
+  // useEffect(() => {
+  //   console.log("Fetching data...");
+  //   const storedData = localStorage.getItem("data");
+  //   if (storedData) {
+  //     console.log("Using local storage data...");
+  //     setCategories(JSON.parse(storedData).categories);
+  //   } else {
+  //     console.log("Fetching data from data.json...");
+  //     fetch(data)
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         setCategories(data.categories);
+  //       })
+  //       .catch((error) => console.error("Error fetching data:", error));
+  //   }
+  // }, []);
+
 
   const handleAddWidget = (category, widget) => {
     const newCategories = [...categories];
     const categoryIndex = newCategories.findIndex((c) => c.id === category.id);
     newCategories[categoryIndex].widgets.push(widget);
     setCategories(newCategories);
-    localStorage.setItem("data", JSON.stringify({ categories: newCategories }));
+    // localStorage.setItem("data", JSON.stringify({ categories: newCategories }));
   };
 
   const handleRemoveWidget = (category, widget) => {
@@ -38,7 +47,7 @@ export const Dashboard = () => {
     );
     newCategories[categoryIndex].widgets.splice(widgetIndex, 1);
     setCategories(newCategories);
-    localStorage.setItem("data", JSON.stringify({ categories: newCategories }));
+    // localStorage.setItem("data", JSON.stringify({ categories: newCategories }));
   };
 
   const handleSearch = (query) => {
